@@ -18,9 +18,11 @@
 {% endblock %}
 
 {% block content %}
-    <a href="#" class="btn btn-raised btn-warning " data-toggle="modal" data-target="#myModal"><i
-            class="glyphicon glyphicon-plus"></i> Add Plot</a>
+<a href="#" class="btn btn-raised btn-warning " data-toggle="modal" data-target="#myModal"><i
+    class="glyphicon glyphicon-plus"></i> Add Plot</a>
 
+    <a href="#" class="btn btn-raised btn-danger" id="btnClearAll"><i
+        class="glyphicon glyphicon-remove"></i> Clear All</a>
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -160,11 +162,57 @@
 
     </div>
 
-    {% if plot_available %}
-            {{ div|safe }}
-        {% endif %}
 {% endblock %}
 
-{% block extras %}
-    {{ script|safe }}
+{% block leftTop %}
+
+        {% if plot_available %}
+        {% include "chart_single.html" %}
+        {% else %}
+        <div class="well">
+                <a href="#" class="btn btn-raised btn-warning " data-toggle="modal" data-target="#myModal"><i
+                    class="glyphicon glyphicon-plus"></i> Add Plot</a>
+        </div>
+        
+    {% endif %}
+
 {% endblock %}
+
+{% block rightTop %}
+
+        {% if plot_available_rithtTop %}
+        {% include "chart_single.html" %}
+        {% else %}
+        <div class="well">
+                <a href="#" class="btn btn-raised btn-warning " data-toggle="modal" data-target="#myModal"><i
+                    class="glyphicon glyphicon-plus"></i> Add Plot</a>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+
+{% block leftMid %}
+    {% if plot_available_leftMid %}
+    {% include "chart_single.html" %}
+    
+    {% else %}
+    <div class="well">
+            <a href="#" class="btn btn-raised btn-warning " data-toggle="modal" data-target="#myModal"><i
+                class="glyphicon glyphicon-plus"></i> Add Plot</a>
+    </div>
+    {% endif %}
+{% endblock %}
+
+{% block rightMid %}
+    {% if plot_available_rightMid %}
+    {% include "chart_single.html" %}
+    
+    {% else %}
+    <div class="well">
+            <a href="#" class="btn btn-raised btn-warning " data-toggle="modal" data-target="#myModal"><i
+                class="glyphicon glyphicon-plus"></i> Add Plot</a>
+    </div>
+{% endif %}
+{% endblock %}
+
